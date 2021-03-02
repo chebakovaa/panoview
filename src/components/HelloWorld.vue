@@ -1,3 +1,9 @@
+<template>
+  <!-- <img alt="Vue logo" src="./assets/logo.png" /> -->
+  <div class="main-div">
+  </div>
+</template>
+
 <script lang="tsx">
 // import { GoldenLayout, LayoutConfig, LayoutManager } from 'golden-layout';
 import { GoldenLayout, LayoutConfig, LayoutManager } from 'golden-layout';
@@ -8,7 +14,7 @@ export const isDocumentReady = () => isClient && document.readyState === 'comple
 
 export function useDocumentReady(func: () => void) {
     onMounted(() => {
-        console.log(isDocumentReady());
+        console.log(`document ready: ${isDocumentReady()}`);
         if (isDocumentReady()) func();
         else
             document.addEventListener('readystatechange', () => isDocumentReady() && func(), {
@@ -51,7 +57,7 @@ export function useGoldenLayout(components: Record<string, Component>, config?: 
     return { element, initialized, layout };
 };
 
-const Test = defineComponent(() => <span>It Works! and do</span>);
+const Test = defineComponent(() => <div style="background-color: red;">It Works! and do</div>);
 
 const Layout = defineComponent(() => {
     const { element } = useGoldenLayout(
